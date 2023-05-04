@@ -2,6 +2,13 @@ import numpy as np
 import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 
 # Load dataset
 df = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/dataset/final_cleaned.csv', index_col=[0])
@@ -89,12 +96,6 @@ y_pred = svm_model.predict(X_test)
 
 # calculate the accuracy of the SVM model predictions on the test data
 accuracy = accuracy_score(y_test, y_pred)
-
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 def preprocess_text_input(input_str):
     # Clean the text data
