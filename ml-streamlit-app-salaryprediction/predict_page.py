@@ -131,6 +131,7 @@ def show_predict_page():
         "Enter desktopAdTemplate from your search , if None please type (-)",'')
 
     def preprocess_text_input(input_str):
+        input_str = str(input_str)
         # Clean the text data
         input_str = input_str.str.split(',')
         input_str = input_str.str.replace('[^\w\s]', '') # Remove punctuation
