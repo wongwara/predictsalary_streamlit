@@ -132,7 +132,7 @@ def load_model():
     return data
 
 regressor_loaded = data["model"]
-jobClassification_enc = data["encode"].values.reshape(-1, 1))
+jobClassification_enc = data["encode"].values.reshape(-1, 1)
 
 # y_pred = regressor_loaded.predict(X)
 # y_pred
