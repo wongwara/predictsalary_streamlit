@@ -122,8 +122,10 @@ data = {"model": svm_model, "jobClassification": jobClassification}
 with open('saved_steps.pkl', 'wb') as file:
     pickle.dump(data, file)
 
-with open('saved_steps.pkl', 'rb') as file:
-    data = pickle.load(file)
+def load_model():
+    with open('saved_steps.pkl', 'rb') as file:
+        data = pickle.load(file)
+    return data
 
 regressor_loaded = data["model"]
 jobClassification = data["jobClassification"]
