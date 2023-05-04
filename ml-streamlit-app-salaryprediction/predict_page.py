@@ -7,12 +7,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
-import pickle
-
-def load_model():
-    with open('saved_steps.pkl', 'rb') as file:
-        data = pickle.load(file)
-    return data
+from prediction import load_model
 
 data = load_model()
 regressor = data["model"]
