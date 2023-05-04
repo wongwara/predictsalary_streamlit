@@ -16,7 +16,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/ma
 
 #code for encoder only the columns that need to transform
 from sklearn.preprocessing import OrdinalEncoder,LabelEncoder
-jobClassification_cats = [['Information & Communication Technology',
+jobClassification_cats = ['Information & Communication Technology',
        'Banking & Financial Services', 'Science & Technology',
        'Education & Training', 'Government & Defence',
        'Consulting & Strategy', 'Healthcare & Medical',
@@ -24,7 +24,7 @@ jobClassification_cats = [['Information & Communication Technology',
        'Retail & Consumer Products', 'Administration & Office Support',
        'Accounting', 'Insurance & Superannuation',
        'Mining, Resources & Energy', 'Real Estate & Property',
-       'Manufacturing, Transport & Logistics', 'Engineering']]
+       'Manufacturing, Transport & Logistics', 'Engineering']
 
 state_cats = [['Australian Capital Territory', 'South Australia','Western Australia']]
 df = df.drop(['state_encoded','min_salary','max_salary','workType','salary_section_enc'],axis =1)
