@@ -25,9 +25,7 @@ jobClassification_cats = [['Information & Communication Technology',
        'Accounting', 'Insurance & Superannuation',
        'Mining, Resources & Energy', 'Real Estate & Property',
        'Manufacturing, Transport & Logistics', 'Engineering']]
-jobClassification =OrdinalEncoder(categories=jobClassification_cats)
 
-Label = LabelEncoder()
 state_cats = [['Australian Capital Territory', 'South Australia','Western Australia']]
 df = df.drop(['state_encoded','min_salary','max_salary','workType','salary_section_enc'],axis =1)
 
@@ -117,8 +115,12 @@ def preprocess_text_input(input_str):
 
     return input_tfidf.toarray()
 
-jobClassification_enc =OrdinalEncoder(categories=jobClassification_cats)
 
+jobClassification_enc = OrdinalEncoder(categories=jobClassification_cats)
+
+
+# replace the original jobClassification column with the transformed values
+data['jobClassification'] = jobClassification
 import pickle
 data = {"model": svm_model, "encode": jobClassification_enc}
 with open('saved_steps.pkl', 'wb') as file:
@@ -130,7 +132,7 @@ def load_model():
     return data
 
 regressor_loaded = data["model"]
-jobClassification_enc = data["encode"]
+jobClassification_enc = jobClassification_enc.fit_transform(data["encode"].values.reshape(-1, 1))
 
 # y_pred = regressor_loaded.predict(X)
 # y_pred
