@@ -18,7 +18,7 @@ def show_predict_page():
 
     st.write("""### We need some information to predict the salary""")
 
-    Jobclassification = (
+    jobClassification = (
         'Information & Communication Technology',
        'Banking & Financial Services', 'Science & Technology',
        'Education & Training', 'Government & Defence',
@@ -96,7 +96,7 @@ def show_predict_page():
         '1',
     )
     
-    Jobclassification = st.selectbox("Jobclassification", Jobclassification)
+    jobclassification = st.selectbox("jobclassification", Jobclassification)
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired)
     st.write("f': 0, 't': 1")
     State = st.selectbox("State", State)
@@ -152,7 +152,7 @@ def show_predict_page():
     ok = st.button("Calculate Salary")
     if ok:
         X = pd.DataFrame({
-        'JobClassification': [Jobclassification],
+        'jobClassification': [jobclassification],
         'IsRightToWorkRequired': [isRightToWorkRequired],
         'State': [State],
         'Python': [Python],
@@ -169,7 +169,7 @@ def show_predict_page():
         'Teaser': [teaser],
         'DesktopAdTemplate': [desktopAdTemplate]
         })
-        X[:, 0] = jobClassification_enc.transform(X[:,0])
+        X['jobClassification'] = jobClassification_enc.transform(X['jobClassification'])
         X['Teaser'] = preprocess_text_input(X['Teaser'])
         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
 
