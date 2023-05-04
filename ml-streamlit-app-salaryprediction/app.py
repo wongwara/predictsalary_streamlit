@@ -1,5 +1,7 @@
 import streamlit as st
 from predict_page import show_predict_page
+import nltk
+nltk.download('stopwords')
 
 # Page configuration
 st.set_page_config(
