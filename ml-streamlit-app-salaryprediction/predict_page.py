@@ -169,9 +169,8 @@ def show_predict_page():
         'Teaser': [teaser],
         'DesktopAdTemplate': [desktopAdTemplate]
         })
-        
-        jobClassification_reshaped = X['jobClassification'].values.reshape(-1, 1)
-        X['jobClassification'] = jobClassification_enc.transform(jobClassification_reshaped)
+
+        X['jobClassification'] = jobClassification_enc.transform(X['jobClassification'])
         X['Teaser'] = preprocess_text_input(X['Teaser'])
         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
 
