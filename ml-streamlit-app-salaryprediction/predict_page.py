@@ -176,6 +176,9 @@ def show_predict_page():
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
         X['Teaser'] = preprocess_text_input(X['Teaser'])
         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+        X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
+        X['State'] = jobClassification_enc.fit_transform(X['State'])
+        X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
         
         salary = regressor_loaded.predict(X)
         st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
