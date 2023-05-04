@@ -171,6 +171,7 @@ def show_predict_page():
         })
         
         X['jobClassification'] = jobClassification_enc.transform(X['jobClassification'])
+        X['jobClassification'] = jobClassification_enc.categories_[0]
         X['Teaser'] = preprocess_text_input(X['Teaser'])
         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
 
