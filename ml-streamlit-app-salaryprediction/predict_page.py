@@ -136,18 +136,18 @@ def show_predict_page():
         input_str = input_str.str.replace('\d+', '') # Remove digits
         # Normalize the text data
         stop_words = set(stopwords.words('english'))
-        input_str = ' '.join([word.lower() for word in input_str.split() if word.lower() not in stop_words])
+        input_str = input_str.apply(lambda x: ' '.join([word.lower() for word in x.split() if word.lower() not in stop_words]))
         # Tokenize the text data
-        input_str = word_tokenize(input_str)
+        input_str = input_str.apply(lambda x: word_tokenize(x))
         # Apply stemming
         stemmer = PorterStemmer()
-        input_str = [stemmer.stem(word) for word in input_str]
+        input_str = input_str.apply(lambda x: [stemmer.stem(word) for word in x])
 
         # Create TF-IDF vectors
         vectorizer = TfidfVectorizer()
-        input_tfidf = vectorizer.fit_transform([' '.join(input_str)])
+        input_tfidf = vectorizer.fit_transform(input_str.apply(lambda x: ' '.join(x)))
 
-        return input_tfidf.toarray()
+        return input_tfidf.toarray()    
     
     ok = st.button("Calculate Salary")
     if ok:
