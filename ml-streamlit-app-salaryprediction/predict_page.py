@@ -8,6 +8,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from prediction import load_model
+import re
 
 data = load_model()
 regressor_loaded = data["model"]
@@ -131,25 +132,25 @@ def show_predict_page():
         "Enter desktopAdTemplate from your search , if None please type (-)",'')
 
     def preprocess_text_input(input_str):
-        input_str = str(input_str)
         # Clean the text data
-        input_str = input_str.split(',')
-        input_str = input_str.replace('[^\w\s]', '') # Remove punctuation
-        input_str = input_str.replace('\d+', '') # Remove digits
+        input_str = str(input_str)  # convert to string
+        input_str = re.sub('[^\w\s]', '', input_str) # Remove punctuation
+        input_str = re.sub('\d+', '', input_str) # Remove digits
         # Normalize the text data
         stop_words = set(stopwords.words('english'))
-        input_str = [' '.join([word.lower() for word in sentence.split() if word.lower() not in stop_words]) for sentence in input_str]
+        input_str = ' '.join([word.lower() for word in input_str.split() if word.lower() not in stop_words])
         # Tokenize the text data
-        input_str = [word_tokenize(sentence) for sentence in input_str]
+        input_str = word_tokenize(input_str)
         # Apply stemming
         stemmer = PorterStemmer()
-        input_str = [[stemmer.stem(word) for word in sentence] for sentence in input_str]
+        input_str = [stemmer.stem(word) for word in input_str]
 
         # Create TF-IDF vectors
         vectorizer = TfidfVectorizer()
-        input_tfidf = vectorizer.fit_transform([' '.join(sentence) for sentence in input_str])
+        input_tfidf = vectorizer.fit_transform([' '.join(input_str)])
 
         return input_tfidf.toarray()
+
 
     ok = st.button("Calculate Salary")
     if ok:
