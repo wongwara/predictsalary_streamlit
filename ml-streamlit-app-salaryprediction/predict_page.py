@@ -132,6 +132,7 @@ def show_predict_page():
 
     def preprocess_text_input(input_str):
         # Clean the text data
+        input_str = input_str.str.split(',')
         input_str = input_str.replace('[^\w\s]', '') # Remove punctuation
         input_str = input_str.replace('\d+', '') # Remove digits
         # Normalize the text data
