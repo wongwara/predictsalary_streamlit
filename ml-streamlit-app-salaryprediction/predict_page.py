@@ -152,7 +152,7 @@ def show_predict_page():
     ok = st.button("Calculate Salary")
     if ok:
         X = pd.DataFrame({
-        'jobClassification': [jobclassification],
+        'jobClassification': [jobClassification],
         'IsRightToWorkRequired': [isRightToWorkRequired],
         'State': [State],
         'Python': [Python],
