@@ -10,8 +10,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from prediction import load_model
 
 data = load_model()
-regressor = data["model"]
-Jobclassification = data["Jobclassification"]
+regressor_loaded = data["model"]
+jobClassification_enc = data["encode"]
 
 def show_predict_page():
     st.title("Software Developer Salary Prediction")
