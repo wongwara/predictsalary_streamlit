@@ -119,8 +119,6 @@ def preprocess_text_input(input_str):
 jobClassification_enc = OrdinalEncoder(categories=jobClassification_cats)
 
 
-# replace the original jobClassification column with the transformed values
-data['jobClassification'] = jobClassification
 import pickle
 data = {"model": svm_model, "encode": jobClassification_enc}
 with open('saved_steps.pkl', 'wb') as file:
