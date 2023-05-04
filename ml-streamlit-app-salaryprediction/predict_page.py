@@ -165,7 +165,7 @@ def show_predict_page():
 
     ok = st.button("Calculate Salary")
     if ok:
-        X = pd.DataFrame({
+    X = pd.DataFrame({
         'jobClassification': [jobClassification],
         'IsRightToWorkRequired': [isRightToWorkRequired],
         'State': [State],
@@ -182,24 +182,55 @@ def show_predict_page():
         'Recruiter': [recruiter],
         'Teaser': [teaser],
         'DesktopAdTemplate': [desktopAdTemplate]
-        })
+    })
 
-        X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
+    X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
+    X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
+    X['State'] = jobClassification_enc.fit_transform(X['State'])
+    X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
+    X['Teaser'] = preprocess_text_input(X['Teaser'])
+    X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+
+    salary = svm_model.predict(X)
+    st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
+    st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
+
+#     if ok:
+#         X = pd.DataFrame({
+#         'jobClassification': [jobClassification],
+#         'IsRightToWorkRequired': [isRightToWorkRequired],
+#         'State': [State],
+#         'Python': [Python],
+#         'SQL': [SQL],
+#         'R': [R],
+#         'Tableau': [Tableau],
+#         'SAS': [SAS],
+#         'Matlab': [Matlab],
+#         'Hadoop': [Hadoop],
+#         'Spark': [Spark],
+#         'Java': [Java],
+#         'Scala': [Scala],
+#         'Recruiter': [recruiter],
+#         'Teaser': [teaser],
+#         'DesktopAdTemplate': [desktopAdTemplate]
+#         })
+
+#         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
         
-        X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
+#         X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
         
-        X['State'] = jobClassification_enc.fit_transform(X['State'])
+#         X['State'] = jobClassification_enc.fit_transform(X['State'])
         
-        X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
+#         X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
         
-        X['Teaser'] = preprocess_text_input(X['Teaser'])
+#         X['Teaser'] = preprocess_text_input(X['Teaser'])
         
-        X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+#         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
         
 
         
-        salary = svm_model.predict(X)
-        st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
-        st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
+#         salary = svm_model.predict(X)
+#         st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
+#         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
         
 
