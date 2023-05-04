@@ -4,7 +4,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Load dataset
-df = pd.read_csv('/Users/lilywijara/Desktop/NLP-group_AT2/final_cleaned.csv', index_col=[0])
+df = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/dataset/final_cleaned.csv', index_col=[0])
 
 #code for encoder only the columns that need to transform
 from sklearn.preprocessing import OrdinalEncoder,LabelEncoder
