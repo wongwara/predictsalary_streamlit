@@ -116,7 +116,7 @@ def preprocess_text_input(input_str):
     return input_tfidf.toarray()
 
 
-jobClassification_enc = OrdinalEncoder(categories=jobClassification_cats)
+jobClassification_enc = LabelEncoder()
 
 
 import pickle
