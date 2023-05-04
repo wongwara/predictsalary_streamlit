@@ -11,6 +11,13 @@ from prediction import load_model
 from sklearn.svm import SVC
 import re
 
+X_train = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/X_train.csv', index_col=[0])
+X_test = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/X_test.csv', index_col=[0])
+y_train = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/y_train.csv', index_col=[0])
+y_test = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/y_test.csv', index_col=[0])
+y_train = y_train.values.ravel()
+y_test = y_test.values.ravel()
+
 data = load_model()
 regressor_loaded = data["model"]
 jobClassification_enc = data["encode"]
@@ -153,6 +160,7 @@ def show_predict_page():
         return input_tfidf.toarray()
     # create an SVM model with the best hyperparameters found using grid search
     svm_model = SVC(C=10, gamma='scale', kernel='linear')
+    svm_model.fit(X_train, y_train)
 
     ok = st.button("Calculate Salary")
     if ok:
