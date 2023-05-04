@@ -96,7 +96,7 @@ def show_predict_page():
         '1',
     )
     
-    jobclassification = st.selectbox("jobclassification", Jobclassification)
+    jobClassification = st.selectbox("jobClassification", jobClassification)
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired)
     st.write("f': 0, 't': 1")
     State = st.selectbox("State", State)
