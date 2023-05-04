@@ -116,7 +116,7 @@ def preprocess_text_input(input_str):
     return input_tfidf.toarray()
 
 import pickle
-data = {"model": svm_model, "jobClassification": jobClassification, "Label": Label}
+data = {"model": svm_model, "jobClassification": jobClassification}
 with open('saved_steps.pkl', 'wb') as file:
     pickle.dump(data, file)
 
@@ -125,7 +125,6 @@ with open('saved_steps.pkl', 'rb') as file:
 
 regressor_loaded = data["model"]
 jobClassification = data["jobClassification"]
-Label = data["Label"]
 
 # y_pred = regressor_loaded.predict(X)
 # y_pred
