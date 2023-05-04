@@ -117,6 +117,8 @@ def preprocess_text_input(input_str):
 
     return input_tfidf.toarray()
 
+jobClassification_enc =OrdinalEncoder(categories=jobClassification_cats)
+
 import pickle
 data = {"model": svm_model, "encode": jobClassification_enc}
 with open('saved_steps.pkl', 'wb') as file:
@@ -128,7 +130,6 @@ def load_model():
     return data
 
 regressor_loaded = data["model"]
-jobClassification_enc =OrdinalEncoder(categories=jobClassification_cats)
 jobClassification_enc = data["encode"]
 
 # y_pred = regressor_loaded.predict(X)
