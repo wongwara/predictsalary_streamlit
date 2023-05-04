@@ -133,9 +133,9 @@ def show_predict_page():
     def preprocess_text_input(input_str):
         input_str = str(input_str)
         # Clean the text data
-        input_str = input_str.str.split(',')
-        input_str = input_str.str.replace('[^\w\s]', '') # Remove punctuation
-        input_str = input_str.str.replace('\d+', '') # Remove digits
+        input_str = input_str.split(',')
+        input_str = input_str.replace('[^\w\s]', '') # Remove punctuation
+        input_str = input_str.replace('\d+', '') # Remove digits
         # Normalize the text data
         stop_words = set(stopwords.words('english'))
         input_str = [' '.join([word.lower() for word in sentence.split() if word.lower() not in stop_words]) for sentence in input_str]
