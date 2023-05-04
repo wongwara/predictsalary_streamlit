@@ -158,6 +158,7 @@ def show_predict_page():
         input_tfidf = vectorizer.fit_transform([' '.join(input_str)])
 
         return input_tfidf.toarray()
+    
     # create an SVM model with the best hyperparameters found using grid search
     svm_model = SVC(C=10, gamma='scale', kernel='linear')
     svm_model.fit(X_train, y_train)
@@ -184,11 +185,18 @@ def show_predict_page():
         })
 
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
-        X['Teaser'] = preprocess_text_input(X['Teaser'])
-        X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+        
         X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
+        
         X['State'] = jobClassification_enc.fit_transform(X['State'])
+        
         X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
+        
+        X['Teaser'] = preprocess_text_input(X['Teaser'])
+        
+        X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+        
+
         
         salary = svm_model.predict(X)
         st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
