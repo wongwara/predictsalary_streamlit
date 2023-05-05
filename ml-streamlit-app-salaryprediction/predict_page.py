@@ -186,7 +186,7 @@ def show_predict_page():
         })
 
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
-        X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
+        X['isRightToWorkRequired'] = jobClassification_enc.fit_transform(X['isRightToWorkRequired'])
         X['State'] = jobClassification_enc.fit_transform(X['State'])
         X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
         X['Teaser'] = preprocess_text_input(X['Teaser'])
