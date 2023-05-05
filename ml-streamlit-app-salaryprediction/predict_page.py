@@ -44,7 +44,7 @@ def show_predict_page():
         '1',
     )
 
-    State = (
+    state = (
         '0',
         '1',
         '2',
@@ -108,7 +108,7 @@ def show_predict_page():
     jobClassification = st.selectbox("jobClassification", jobClassification)
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired)
     st.write("f': 0, 't': 1")
-    State = st.selectbox("State", State)
+    state = st.selectbox("state", state)
     st.write("'Australian Capital Territory':0, 'South Australia':1,'Western Australia':2")
     Python = st.selectbox("Python", Python)
     st.write("'Yes':1, 'No':0")
@@ -157,7 +157,8 @@ def show_predict_page():
         vectorizer = TfidfVectorizer()
         input_tfidf = vectorizer.fit_transform([' '.join(input_str)])
 
-        return input_tfidf.toarray()
+        return input_tfidf
+#     .toarray()
     
     # create an SVM model with the best hyperparameters found using grid search
     svm_model = SVC(C=10, gamma='scale', kernel='linear')
@@ -167,8 +168,8 @@ def show_predict_page():
     if ok:
         X = pd.DataFrame({
         'jobClassification': [jobClassification],
-        'IsRightToWorkRequired': [isRightToWorkRequired],
-        'State': [State],
+        'isRightToWorkRequired': [isRightToWorkRequired],
+        'state': [state],
         'Python': [Python],
         'SQL': [SQL],
         'R': [R],
@@ -179,9 +180,9 @@ def show_predict_page():
         'Spark': [Spark],
         'Java': [Java],
         'Scala': [Scala],
-        'Recruiter': [recruiter],
-        'Teaser': [teaser],
-        'DesktopAdTemplate': [desktopAdTemplate]
+        'recruiter': [recruiter],
+        'teaser': [teaser],
+        'desktopAdTemplate': [desktopAdTemplate]
         })
 
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
@@ -190,6 +191,9 @@ def show_predict_page():
         X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
         X['Teaser'] = preprocess_text_input(X['Teaser'])
         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+        
+        # Concatenate the TF-IDF vectors with the original dataframe
+        X = pd.concat([X.drop(['teaser', 'desktopAdTemplate'], axis=1), pd.DataFrame(teaser_tfidf.toarray()), pd.DataFrame(desktopAdTemplate_tfidf.toarray())], axis=1)
 
         salary = svm_model.predict(X)
         st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
