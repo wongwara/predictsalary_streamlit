@@ -198,9 +198,9 @@ def show_predict_page():
         })
 
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
-        X['isRightToWorkRequired'] = jobClassification_enc.fit_transform(X['isRightToWorkRequired'])
-        X['state'] = jobClassification_enc.fit_transform(X['state'])
-        X['recruiter'] = jobClassification_enc.fit_transform(X['recruiter'])
+#         X['isRightToWorkRequired'] = jobClassification_enc.fit_transform(X['isRightToWorkRequired'])
+#         X['state'] = jobClassification_enc.fit_transform(X['state'])
+#         X['recruiter'] = jobClassification_enc.fit_transform(X['recruiter'])
         X['teaser'] = preprocess_text_input(X['teaser'])
         X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])
 #         teaser_tfidf = teaser_tfidf.reshape(1, -1).toarray() if isinstance(teaser_tfidf, scipy.sparse.csr.csr_matrix) else teaser_tfidf.reshape(1, -1)
