@@ -157,8 +157,7 @@ def show_predict_page():
         vectorizer = TfidfVectorizer()
         input_tfidf = vectorizer.fit_transform([' '.join(input_str)])
 
-        return input_tfidf
-#     .toarray()
+        return input_tfidf.toarray()
     
     # create an SVM model with the best hyperparameters found using grid search
     svm_model = SVC(C=10, gamma='scale', kernel='linear')
