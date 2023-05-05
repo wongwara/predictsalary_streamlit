@@ -106,30 +106,43 @@ def show_predict_page():
     )
     
     jobClassification = st.selectbox("jobClassification", jobClassification)
+    
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired)
     st.write("f': 0, 't': 1")
+    
     state = st.selectbox("state", state)
     st.write("'Australian Capital Territory':0, 'South Australia':1,'Western Australia':2")
+    
     Python = st.selectbox("Python", Python)
     st.write("'Yes':1, 'No':0")
+    
     SQL = st.selectbox("SQL", SQL)
     st.write("'Yes':1, 'No':0")
+    
     R = st.selectbox("R", R)
     st.write("'Yes':1, 'No':0")
+    
     Tableau = st.selectbox("Tableau", Tableau)
     st.write("'Yes':1, 'No':0")
+    
     SAS = st.selectbox("SAS", SAS)
     st.write("'Yes':1, 'No':0")
+    
     Matlab = st.selectbox("Matlab", Matlab)
     st.write("'Yes':1, 'No':0")
+    
     Hadoop = st.selectbox("Hadoop", Hadoop)
     st.write("'Yes':1, 'No':0")
+    
     Spark = st.selectbox("Spark", Spark)
     st.write("'Yes':1, 'No':0")
+    
     Java = st.selectbox("Java", Java)
     st.write("'Yes':1, 'No':0")
+    
     Scala = st.selectbox("Scala", Scala)
     st.write("'Yes':1, 'No':0")
+    
     recruiter = st.selectbox("recruiter", recruiter)
     st.write("'Yes':1, 'No':0")
     
