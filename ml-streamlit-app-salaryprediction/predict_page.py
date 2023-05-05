@@ -190,11 +190,11 @@ def show_predict_page():
         X['recruiter'] = jobClassification_enc.fit_transform(X['recruiter'])
         X['teaser'] = preprocess_text_input(X['teaser'])
         X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])
-        teaser_tfidf = teaser_tfidf.reshape(1, -1).toarray() if isinstance(teaser_tfidf, scipy.sparse.csr.csr_matrix) else teaser_tfidf.reshape(1, -1)
-        desktopAdTemplate_tfidf = desktopAdTemplate_tfidf.reshape(1, -1).toarray()
+#         teaser_tfidf = teaser_tfidf.reshape(1, -1).toarray() if isinstance(teaser_tfidf, scipy.sparse.csr.csr_matrix) else teaser_tfidf.reshape(1, -1)
+#         desktopAdTemplate_tfidf = desktopAdTemplate_tfidf.reshape(1, -1).toarray()
 
-        # Concatenate the TF-IDF vectors with the original dataframe
-        X = pd.concat([X.drop(['teaser', 'desktopAdTemplate'], axis=1), pd.DataFrame(teaser_tfidf.toarray()), pd.DataFrame(desktopAdTemplate_tfidf.toarray())], axis=1)
+#         # Concatenate the TF-IDF vectors with the original dataframe
+#         X = pd.concat([X.drop(['teaser', 'desktopAdTemplate'], axis=1), pd.DataFrame(teaser_tfidf.toarray()), pd.DataFrame(desktopAdTemplate_tfidf.toarray())], axis=1)
 
         salary = svm_model.predict(X)
         st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
