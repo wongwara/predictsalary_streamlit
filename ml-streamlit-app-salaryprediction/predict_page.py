@@ -187,10 +187,10 @@ def show_predict_page():
 
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
         X['isRightToWorkRequired'] = jobClassification_enc.fit_transform(X['isRightToWorkRequired'])
-        X['State'] = jobClassification_enc.fit_transform(X['State'])
-        X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
-        X['Teaser'] = preprocess_text_input(X['Teaser'])
-        X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
+        X['state'] = jobClassification_enc.fit_transform(X['state'])
+        X['recruiter'] = jobClassification_enc.fit_transform(X['recruiter'])
+        X['teaser'] = preprocess_text_input(X['teaser'])
+        X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])
         
         # Concatenate the TF-IDF vectors with the original dataframe
         X = pd.concat([X.drop(['teaser', 'desktopAdTemplate'], axis=1), pd.DataFrame(teaser_tfidf.toarray()), pd.DataFrame(desktopAdTemplate_tfidf.toarray())], axis=1)
