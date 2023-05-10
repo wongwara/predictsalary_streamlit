@@ -180,7 +180,7 @@ def show_predict_page():
     if ok:
         X = pd.DataFrame({
         'jobClassification': [jobClassification],
-        'IsRightToWorkRequired': [isRightToWorkRequired],
+        'isRightToWorkRequired': [isRightToWorkRequired],
         'state': [state],
         'Python': [Python],
         'SQL': [SQL],
