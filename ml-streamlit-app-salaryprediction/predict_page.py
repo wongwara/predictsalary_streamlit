@@ -133,9 +133,9 @@ def show_predict_page():
     recruiter = st.selectbox("recruiter", recruiter)
     st.write("'Yes':1, 'No':0")
     
-    # create an SVM model with the best hyperparameters found using grid search
-    svm_model = SVC(C=10, gamma='scale', kernel='linear')
-    svm_model.fit(X_train, y_train)
+#     # create an SVM model with the best hyperparameters found using grid search
+#     svm_model = SVC(C=10, gamma='scale', kernel='linear')
+#     svm_model.fit(X, y)
 
     ok = st.button("Calculate Salary")
     if ok:
