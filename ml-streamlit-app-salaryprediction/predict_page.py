@@ -39,6 +39,7 @@ def show_predict_page():
         'No': 0,
         'Yes': 1,
     }
+   
 
     Python_dict = {
         'No': 0,
@@ -105,24 +106,64 @@ def show_predict_page():
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
     isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
     Python_options = list(Python_dict.keys())
-    Python = st.multiselect("Python", Python_options)
+    Python = st.multiselect("Python", options=Python_options, default=["No"])
     Python = [Python_dict[p] for p in Python]
 
     SQL_options = list(SQL_dict.keys())
-    SQL = st.multiselect("SQL", SQL_options)
+    SQL = st.multiselect("SQL", options=SQL_options, default=["No"])
     SQL = [SQL_dict[s] for s in SQL]
 
     R_options = list(R_dict.keys())
-    R = st.multiselect("R", R_options)
+    R = st.multiselect("R", options=R_options, default=["No"])
     R = [R_dict[r] for r in R]
 
     Tableau_options = list(Tableau_dict.keys())
-    Tableau = st.multiselect("Tableau", Tableau_options)
+    Tableau = st.multiselect("Tableau", options=Tableau_options, default=["No"])
     Tableau = [Tableau_dict[t] for t in Tableau]
 
     SAS_options = list(SAS_dict.keys())
-    SAS = st.multiselect("SAS", SAS_options)
+    SAS = st.multiselect("SAS", options=SAS_options, default=["No"])
     SAS = [SAS_dict[s] for s in SAS]
+
+    Matlab_options = list(Matlab_dict.keys())
+    Matlab = st.multiselect("Matlab", options=Matlab_options, default=["No"])
+    Matlab = [Matlab_dict[m] for m in Matlab]
+
+    Hadoop_options = list(Hadoop_dict.keys())
+    Hadoop = st.multiselect("Hadoop", options=Hadoop_options, default=["No"])
+    Hadoop = [Hadoop_dict[h] for h in Hadoop]
+
+    Spark_options = list(Spark_dict.keys())
+    Spark = st.multiselect("Spark", options=Spark_options, default=["No"])
+    Spark = [Spark_dict[s] for s in Spark]
+
+    Java_options = list(Java_dict.keys())
+    Java = st.multiselect("Java", options=Java_options, default=["No"])
+    Java = [Java_dict[j] for j in Java]
+
+    Scala_options = list(Scala_dict.keys())
+    Scala = st.multiselect("Scala", options=Scala_options, default=["No"])
+    Scala = [Scala_dict[s] for s in Scala]
+
+#     Python_options = list(Python_dict.keys())
+#     Python = st.multiselect("Python", Python_options)
+#     Python = [Python_dict[p] for p in Python]
+
+#     SQL_options = list(SQL_dict.keys())
+#     SQL = st.multiselect("SQL", SQL_options)
+#     SQL = [SQL_dict[s] for s in SQL]
+
+#     R_options = list(R_dict.keys())
+#     R = st.multiselect("R", R_options)
+#     R = [R_dict[r] for r in R]
+
+#     Tableau_options = list(Tableau_dict.keys())
+#     Tableau = st.multiselect("Tableau", Tableau_options)
+#     Tableau = [Tableau_dict[t] for t in Tableau]
+
+#     SAS_options = list(SAS_dict.keys())
+#     SAS = st.multiselect("SAS", SAS_options)
+#     SAS = [SAS_dict[s] for s in SAS]
 
 #     Python_options = list(Python_dict.keys())
 #     Python = st.selectbox("Python", Python_options)
@@ -144,25 +185,25 @@ def show_predict_page():
 #     SAS = st.selectbox("SAS", SAS_options)
 #     SAS = SAS_dict[SAS]
     
-    Matlab_options = list(Matlab_dict.keys())
-    Matlab = st.selectbox("Matlab", Matlab_options)
-    Matlab = Matlab_dict[Matlab] 
+#     Matlab_options = list(Matlab_dict.keys())
+#     Matlab = st.selectbox("Matlab", Matlab_options)
+#     Matlab = Matlab_dict[Matlab] 
     
-    Hadoop_options = list(Hadoop_dict.keys())
-    Hadoop = st.selectbox("Hadoop", Hadoop_options)
-    Hadoop = Hadoop_dict[Hadoop] 
+#     Hadoop_options = list(Hadoop_dict.keys())
+#     Hadoop = st.selectbox("Hadoop", Hadoop_options)
+#     Hadoop = Hadoop_dict[Hadoop] 
     
-    Spark_options = list(Spark_dict.keys())
-    Spark = st.selectbox("Spark", Spark_options)
-    Spark = Spark_dict[Spark] 
+#     Spark_options = list(Spark_dict.keys())
+#     Spark = st.selectbox("Spark", Spark_options)
+#     Spark = Spark_dict[Spark] 
     
-    Java_options = list(Java_dict.keys())
-    Java = st.selectbox("Java", Java_options)
-    Java = Java_dict[Java] 
+#     Java_options = list(Java_dict.keys())
+#     Java = st.selectbox("Java", Java_options)
+#     Java = Java_dict[Java] 
     
-    Scala_options = list(Scala_dict.keys())
-    Scala = st.selectbox("Scala", Scala_options)
-    Scala = Scala_dict[Scala] 
+#     Scala_options = list(Scala_dict.keys())
+#     Scala = st.selectbox("Scala", Scala_options)
+#     Scala = Scala_dict[Scala] 
     
     recruiter_options = list(recruiter_dict.keys())
     recruiter = st.selectbox("recruiter", recruiter_options)
