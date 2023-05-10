@@ -20,7 +20,7 @@ def show_explore_page():
     df.index = pd.to_datetime(df['listingDate'])
     monthly_count = df.resample('W').size()
     monthly_count = monthly_count.reset_index(name = 'count')
-    chart data = (data=df, x=monthly_count['listingDate'], monthly_count['count'], width= 6,color = ["#275e8e"])
+    chart_data = {'x': monthly_count['listingDate'], 'y': monthly_count['count']}
     st.line_chart(chart_data)
     
 #     st.set_title('Job release amount per week')
