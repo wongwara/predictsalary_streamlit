@@ -197,7 +197,7 @@ def show_predict_page():
         'DesktopAdTemplate': [desktopAdTemplate]
         })
         # Store inputs into dataframe
-       X['jobClassification'] = OrdinalEncoder().fit_transform(X['jobClassification'])
+       X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
         # Output prediction
        X['teaser'] = preprocess_text_input(X['teaser'])
        X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])       
