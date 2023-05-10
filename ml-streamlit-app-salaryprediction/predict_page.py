@@ -40,60 +40,61 @@ def show_predict_page():
         'Yes': 1,
     }
 
-    Python = (
-        '0',
-        '1',
+    Python_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    SQL = (
-        '0',
-        '1',
+    SQL_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    R = (
-        '0',
-        '1',
+    R_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    Tableau = (
-        '0',
-        '1',
+    Tableau_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    SAS = (
-        '0',
-        '1',
+    SAS_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    Matlab = (
-        '0',
-        '1',
+    Matlab_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    Hadoop = (
-        '0',
-        '1',
+    Hadoop_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    Spark = (
-        '0',
-        '1',
+    Spark_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    Java = (
-        '0',
-        '1',
-    )  
-    
-    Scala = (
-        '0',
-        '1',
+    Java_dict = (
+        'No': 0,
+        'Yes': 1,
     )
     
-    recruiter = (
-        '0',
-        '1',
+    Scala_dict = (
+        'No': 0,
+        'Yes': 1,
     )
+    
+    recruiter_dict = (
+        'No': 0,
+        'Yes': 1,
+    )
+    
     job_classification_options = list(job_classification_dict.keys())
     job_classification = st.selectbox("jobClassification", job_classification_options)
     jobClassification = job_classification_dict[job_classification]
@@ -103,42 +104,49 @@ def show_predict_page():
     isRightToWorkRequired_options = list(isRightToWorkRequired_dict.keys())
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
     isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
-    Python = st.selectbox("Python", Python)
-    st.write("'Yes':1, 'No':0")
+    Python_options = list(Python_dict.keys())
+    Python = st.selectbox("Python", Python_options)
+    Python = Python_dict[Python]
+   
+    SQL_options = list(SQL_dict.keys())
+    SQL = st.selectbox("SQL", SQL_options)
+    SQL = SQL_dict[SQL]
     
-    SQL = st.selectbox("SQL", SQL)
-    st.write("'Yes':1, 'No':0")
+    R_options = list(R_dict.keys())
+    R = st.selectbox("R", R_options)
+    R = R_dict[R]
     
-    R = st.selectbox("R", R)
-    st.write("'Yes':1, 'No':0")
+    Tableau_options = list(Tableau_dict.keys())
+    Tableau = st.selectbox("Tableau", Tableau_options)
+    Tableau = Tableau_dict[Tableau]
     
-    Tableau = st.selectbox("Tableau", Tableau)
-    st.write("'Yes':1, 'No':0")
+    SAS_options = list(SAS_dict.keys())
+    SAS = st.selectbox("SAS", SAS_options)
+    SAS = SAS_dict[SAS]
     
-    SAS = st.selectbox("SAS", SAS)
-    st.write("'Yes':1, 'No':0")
+    Matlab_options = list(Matlab_dict.keys())
+    Matlab = st.selectbox("Matlab", Matlab_options)
+    Matlab = Matlab_dict[Matlab] 
     
-    Matlab = st.selectbox("Matlab", Matlab)
-    st.write("'Yes':1, 'No':0")
+    Hadoop_options = list(Hadoop_dict.keys())
+    Hadoop = st.selectbox("Hadoop", Hadoop_options)
+    Hadoop = Hadoop_dict[Hadoop] 
     
-    Hadoop = st.selectbox("Hadoop", Hadoop)
-    st.write("'Yes':1, 'No':0")
+    Spark_options = list(Spark_dict.keys())
+    Spark = st.selectbox("Spark", Spark_options)
+    Spark = Spark_dict[Spark] 
     
-    Spark = st.selectbox("Spark", Spark)
-    st.write("'Yes':1, 'No':0")
+    Java_options = list(Java_dict.keys())
+    Java = st.selectbox("Java", Java_options)
+    Java = Java_dict[Java] 
     
-    Java = st.selectbox("Java", Java)
-    st.write("'Yes':1, 'No':0")
+    Scala_options = list(Scala_dict.keys())
+    Scala = st.selectbox("Scala", Scala_options)
+    Scala = Scala_dict[Scala] 
     
-    Scala = st.selectbox("Scala", Scala)
-    st.write("'Yes':1, 'No':0")
-    
-    recruiter = st.selectbox("recruiter", recruiter)
-    st.write("'Yes':1, 'No':0")
-    
-#     # create an SVM model with the best hyperparameters found using grid search
-#     svm_model = SVC(C=10, gamma='scale', kernel='linear')
-#     svm_model.fit(X, y)
+    recruiter_options = list(recruiter_dict.keys())
+    recruiter = st.selectbox("recruiter", recruiter_options)
+    recruiter = recruiter_dict[recruiter] 
 
     ok = st.button("Calculate Salary")
     if ok:
@@ -158,50 +166,9 @@ def show_predict_page():
         'Scala': [Scala],
         'recruiter': [recruiter],
         })
-
-#         # Output prediction
-#         X['jobClassification'] = 'jobClassification'
-#         X['jobClassification'] = X['jobClassification'].replace(jobClassification)
-
-
+        
         salary = regressor_loaded.predict(X)
         st.subheader(f"The estimated salary range is {salary}")
         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
-
-#     if ok:
-#         X = pd.DataFrame({
-#         'jobClassification': [jobClassification],
-#         'IsRightToWorkRequired': [isRightToWorkRequired],
-#         'State': [State],
-#         'Python': [Python],
-#         'SQL': [SQL],
-#         'R': [R],
-#         'Tableau': [Tableau],
-#         'SAS': [SAS],
-#         'Matlab': [Matlab],
-#         'Hadoop': [Hadoop],
-#         'Spark': [Spark],
-#         'Java': [Java],
-#         'Scala': [Scala],
-#         'Recruiter': [recruiter],
-#         'Teaser': [teaser],
-#         'DesktopAdTemplate': [desktopAdTemplate]
-#         })
-
-#         X['jobClassification'] = OrdinalEncoder().fit_transform(X['jobClassification'])
-        
-#         X['IsRightToWorkRequired'] = jobClassification_enc.fit_transform(X['IsRightToWorkRequired'])
-        
-#         X['State'] = jobClassification_enc.fit_transform(X['State'])
-        
-#         X['Recruiter'] = jobClassification_enc.fit_transform(X['Recruiter'])
-        
-#         X['Teaser'] = preprocess_text_input(X['Teaser'])
-        
-#         X['DesktopAdTemplate'] = preprocess_text_input(X['DesktopAdTemplate'])
-        
-#         salary = svm_model.predict(X)
-#         st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
-#         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
-        
+      
 
