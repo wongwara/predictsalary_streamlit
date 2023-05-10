@@ -21,7 +21,6 @@ def show_explore_page():
     monthly_count = df.resample('W').size()
     monthly_count = monthly_count.reset_index(name = 'count')
 
-    fig1 = Figure()
     ax = fig1.subplots()
     ax.bar(monthly_count['listingDate'], monthly_count['count'], width = 6, color = ["#275e8e"])
     ax.set_title('Job release amount per week')
