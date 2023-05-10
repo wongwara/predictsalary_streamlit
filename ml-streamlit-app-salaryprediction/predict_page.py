@@ -157,6 +157,9 @@ def show_predict_page():
         })
 
         # Output prediction
+        X['jobClassificationl'] = 'jobClassification'
+        X['jobClassificationl'] = X['jobClassificationl'].replace(jobClassification)
+
 
         salary = regressor_loaded.predict(X)
         st.subheader(f"The estimated salary range is {salary}")
