@@ -78,4 +78,23 @@ def show_explore_page():
         Knowing the most popular programming languages is crucial for job searchers who want to obtain significant insight into the data scientist job market. Some of the most widely used languages in the sector are Python, SQL, R, SAS, and many others. employment searchers can better understand which talents are most in demand in the current employment market by graphing the usage frequency of various languages. 
         """
     )
+    # data preprocessing
+    state_name = ['New South Wales', 'Australian Capital Territory', 'Victoria','Western Australia', 'Queensland', 'Northern Territory', 'South Australia', 'Tasmania']
+    job_amount = df['state'].value_counts()
+
+    df_jobinAU = pd.DataFrame(columns = ['amount'], index = state_name)
+
+    for state in job_amount.index:
+        if state in state_name:
+            df_jobinAU['amount'][state] = job_amount[state]
+
+    df_jobinAU = df_jobinAU.sort_values('amount')
+
+    fig = px.bar(df_jobinAU, x='amount', y=df_jobinAU.index, orientation='h', color='amount', 
+             color_continuous_scale='Blues', range_color=(0, max(df_jobinAU['amount'])),
+             labels={'amount': 'Job Amount', 'index': 'State'})
+
+    fig.update_layout(title='Job Amount in Different States', xaxis_title='', yaxis_title='')
+
+    st.plotly_chart(fig)
 
