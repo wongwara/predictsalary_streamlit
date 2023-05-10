@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
+import plotly.graph_objs as go
 
 def load_data():
     df = pd.read_csv("https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/dataset/listings2019_2022.csv")
@@ -95,6 +96,24 @@ def show_explore_page():
              labels={'amount': 'Job Amount', 'index': 'State'})
 
     fig.update_layout(title='Job Amount in Different States', xaxis_title='', yaxis_title='')
+
+    st.plotly_chart(fig)
+    
+    job_vacancy = df['companyName'].value_counts()
+    job_vacancy_cleaned = pd.Series(job_vacancy.loc[job_vacancy >= 10])
+
+    fig = go.Figure(go.Bar(
+        x=job_vacancy_cleaned.index,
+        y=job_vacancy_cleaned,
+        marker=dict(color='#275e8e'),
+    ))
+
+    fig.update_layout(
+        xaxis_tickangle=-45,
+        xaxis_tickfont=dict(size=10),
+        margin=dict(l=20, r=20, t=50, b=20),
+        title='Jobs release more than 10 vacancies in four years'
+    )
 
     st.plotly_chart(fig)
 
