@@ -40,60 +40,60 @@ def show_predict_page():
         'Yes': 1,
     }
 
-    Python_dict = (
+    Python_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    SQL_dict = (
+    SQL_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    R_dict = (
+    R_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    Tableau_dict = (
+    Tableau_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    SAS_dict = (
+    SAS_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    Matlab_dict = (
+    Matlab_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    Hadoop_dict = (
+    Hadoop_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    Spark_dict = (
+    Spark_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    Java_dict = (
+    Java_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    Scala_dict = (
+    Scala_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
-    recruiter_dict = (
+    recruiter_dict = {
         'No': 0,
         'Yes': 1,
-    )
+    }
     
     job_classification_options = list(job_classification_dict.keys())
     job_classification = st.selectbox("jobClassification", job_classification_options)
