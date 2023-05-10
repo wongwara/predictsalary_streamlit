@@ -40,7 +40,7 @@ from sklearn.metrics import accuracy_score,f1_score
 # Model building
 
 # create an SVM model with the best hyperparameters found using grid search
-svm_model = SVC(C=10, gamma='scale', kernel='linear')
+svm_model = SVC(C=1, gamma='scale', kernel='linear')
 
 # fit the SVM model to the training data
 svm_model.fit(X_train, y_train)
