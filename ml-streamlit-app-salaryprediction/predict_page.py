@@ -105,24 +105,44 @@ def show_predict_page():
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
     isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
     Python_options = list(Python_dict.keys())
-    Python = st.selectbox("Python", Python_options)
-    Python = Python_dict[Python]
-   
+    Python = st.multiselect("Python", Python_options)
+    Python = [Python_dict[p] for p in Python]
+
     SQL_options = list(SQL_dict.keys())
-    SQL = st.selectbox("SQL", SQL_options)
-    SQL = SQL_dict[SQL]
-    
+    SQL = st.multiselect("SQL", SQL_options)
+    SQL = [SQL_dict[s] for s in SQL]
+
     R_options = list(R_dict.keys())
-    R = st.selectbox("R", R_options)
-    R = R_dict[R]
-    
+    R = st.multiselect("R", R_options)
+    R = [R_dict[r] for r in R]
+
     Tableau_options = list(Tableau_dict.keys())
-    Tableau = st.selectbox("Tableau", Tableau_options)
-    Tableau = Tableau_dict[Tableau]
-    
+    Tableau = st.multiselect("Tableau", Tableau_options)
+    Tableau = [Tableau_dict[t] for t in Tableau]
+
     SAS_options = list(SAS_dict.keys())
-    SAS = st.selectbox("SAS", SAS_options)
-    SAS = SAS_dict[SAS]
+    SAS = st.multiselect("SAS", SAS_options)
+    SAS = [SAS_dict[s] for s in SAS]
+
+#     Python_options = list(Python_dict.keys())
+#     Python = st.selectbox("Python", Python_options)
+#     Python = Python_dict[Python]
+   
+#     SQL_options = list(SQL_dict.keys())
+#     SQL = st.selectbox("SQL", SQL_options)
+#     SQL = SQL_dict[SQL]
+    
+#     R_options = list(R_dict.keys())
+#     R = st.selectbox("R", R_options)
+#     R = R_dict[R]
+    
+#     Tableau_options = list(Tableau_dict.keys())
+#     Tableau = st.selectbox("Tableau", Tableau_options)
+#     Tableau = Tableau_dict[Tableau]
+    
+#     SAS_options = list(SAS_dict.keys())
+#     SAS = st.selectbox("SAS", SAS_options)
+#     SAS = SAS_dict[SAS]
     
     Matlab_options = list(Matlab_dict.keys())
     Matlab = st.selectbox("Matlab", Matlab_options)
