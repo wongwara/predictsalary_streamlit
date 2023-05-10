@@ -10,8 +10,5 @@ if page == "Predict":
 else:
     show_explore_page()
 
-# Title of the app
-st.title('Salary Prediction App')
-show_predict_page()
 
     
