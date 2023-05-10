@@ -181,7 +181,7 @@ def show_predict_page():
        X = pd.DataFrame({
         'jobClassification': [jobClassification],
         'IsRightToWorkRequired': [isRightToWorkRequired],
-        'State': [state],
+        'state': [state],
         'Python': [Python],
         'SQL': [SQL],
         'R': [R],
@@ -192,9 +192,9 @@ def show_predict_page():
         'Spark': [Spark],
         'Java': [Java],
         'Scala': [Scala],
-        'Recruiter': [recruiter],
-        'Teaser': [teaser],
-        'DesktopAdTemplate': [desktopAdTemplate]
+        'recruiter': [recruiter],
+        'teaser': [teaser],
+        'desktopAdTemplate': [desktopAdTemplate]
         })
         # Store inputs into dataframe
        X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
