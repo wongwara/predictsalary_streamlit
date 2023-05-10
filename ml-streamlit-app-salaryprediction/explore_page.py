@@ -26,16 +26,16 @@ def show_explore_page():
     ### Stack Overflow Developer Survey 2020
     """
     )
-    df.index = pd.to_datetime(df['listingDate'])
-    monthly_count = df.resample('W').size()
-    monthly_count = monthly_count.reset_index(name = 'count')
+#     df.index = pd.to_datetime(df['listingDate'])
+#     monthly_count = df.resample('W').size()
+#     monthly_count = monthly_count.reset_index(name = 'count')
 
-    fig1 = plt.bar(monthly_count['listingDate'], monthly_count['count'], width = 6, color = ["#275e8e"])
-    plt.title('Job release amount per week')
-    plt.xticks(rotation = 45)
-    plt.show()
+#     fig1 = plt.bar(monthly_count['listingDate'], monthly_count['count'], width = 6, color = ["#275e8e"])
+#     plt.title('Job release amount per week')
+#     plt.xticks(rotation = 45)
+#     plt.show()
     
-    st.write("""#### Number of Data from different countries""")
+#     st.write("""#### Number of Data from different countries""")
 
-    st.pyplot(fig1)
+#     st.pyplot(fig1)
     
