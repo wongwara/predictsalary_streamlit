@@ -189,6 +189,7 @@ def show_predict_page():
         min_salary = int(float(salary_range_list[0]))  # convert the first value to float and then to int
         max_salary = int(float(salary_range_list[1]))  # convert the second value to float and then to int
         st.subheader(f"The estimate salary from the given information is in the range of {min_salary:,.0f} to {max_salary:,.0f}$")
-        st.write(""" ANLP_Baymax group 55 - Data Scientist salary prediction using a machine learning model """)
-        st.write("""36118 Applied Natural Language Processing University of Technology Sydney """)
+        
+st.write(""" ANLP_Baymax group 55 - Data Scientist salary prediction using a machine learning model """)
+st.write("""36118 Applied Natural Language Processing University of Technology Sydney """)
         
