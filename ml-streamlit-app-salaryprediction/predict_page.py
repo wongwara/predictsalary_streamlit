@@ -181,7 +181,7 @@ def show_predict_page():
        X = pd.DataFrame({
         'jobClassification': [jobClassification],
         'IsRightToWorkRequired': [isRightToWorkRequired],
-        'State': [State],
+        'State': [state],
         'Python': [Python],
         'SQL': [SQL],
         'R': [R],
