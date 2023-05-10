@@ -57,7 +57,7 @@ def show_explore_page():
     st.plotly_chart(fig2)
     st.write(
         """
-    represents the data by counting the number of jobs released each month from January 2019 to January 2022, grouping them by month, and calculating the overall number.
+    The chart above represents the data by counting the number of jobs released each month from January 2019 to January 2022, grouping them by month, and calculating the overall number.
     """
     )
     st.write(
@@ -98,7 +98,8 @@ def show_explore_page():
     fig.update_layout(title='Job Amount in Different States', xaxis_title='', yaxis_title='')
 
     st.plotly_chart(fig)
-    
+    st.write("""the states of NSW, VIC, and QLD have the most job opportunities.""")
+   
     job_vacancy = df['companyName'].value_counts()
     job_vacancy_cleaned = pd.Series(job_vacancy.loc[job_vacancy >= 10])
 
@@ -116,4 +117,7 @@ def show_explore_page():
     )
 
     st.plotly_chart(fig)
+    st.write("""
+     The data shows that the Australian Bureau of Statistics, the Australian Department of Defence, SEEK, Capgemini, and Suncorp are the top five corporations that have posted the most job openings.
+    """)
 
