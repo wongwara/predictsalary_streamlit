@@ -168,12 +168,11 @@ def show_predict_page():
         })
         
         salary = regressor_loaded.predict(X)
-        st.subheader(f"The estimated salary range is {salary}")
         salary_range_str = salary[0].strip('[]()')  # remove the brackets and parentheses
         salary_range_list = salary_range_str.split(',')  # split the string by comma
         min_salary = int(float(salary_range_list[0]))  # convert the first value to float and then to int
         max_salary = int(float(salary_range_list[1]))  # convert the second value to float and then to int
-        st.subheader(f"{min_salary} to {max_salary}$")
+        st.subheader(f"The estimate salary from the given information is in the range of {min_salary} to {max_salary}$")
         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
       
 
