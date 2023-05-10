@@ -107,7 +107,7 @@ def show_predict_page():
         recruiter_options = list(recruiter_dict.keys())
         recruiter = st.selectbox("recruiter", recruiter_options)
         recruiter = recruiter_dict[recruiter] 
-        st.image("https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80")
+        st.image("https://images.unsplash.com/photo-1530230624258-4055a187ef65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1341&q=80")
 
     with col2:
         st.header("Programming Required")
