@@ -54,7 +54,11 @@ def show_explore_page():
 
     # Display the chart in Streamlit
     st.plotly_chart(fig2)
-    
+    st.write(
+        """
+    The bar chart can be used by job seekers to find businesses that post openings more frequently. The graph displays explicitly the number of businesses that announced more than ten job openings during the four-year span. The data shows that the Australian Bureau of Statistics, the Australian Department of Defence, SEEK, Capgemini, and Suncorp are the top five corporations that have posted the most job openings. 
+    """
+    )
     st.write(
         """
     ### Top 10 Programming Languages Required for Data Scientist
