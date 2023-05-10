@@ -14,17 +14,9 @@ def show_predict_page():
 
     st.write("""### We need some information to predict the salary""")
 
-    jobClassification = ({
-        'Information & Communication Technology': 0,
-       'Banking & Financial Services':1, 'Science & Technology':2,
-       'Education & Training':3, 'Government & Defence':4,
-       'Consulting & Strategy':5, 'Healthcare & Medical':6,
-       'Human Resources & Recruitment':7, 'Marketing & Communications':8,
-       'Retail & Consumer Products':9, 'Administration & Office Support':10,
-       'Accounting':11, 'Insurance & Superannuation':12,
-       'Mining, Resources & Energy':13, 'Real Estate & Property':14,
-       'Manufacturing':15, 'Transport & Logistics':16, 'Engineering':17,
-    })
+    jobClassification = (
+       '0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17'
+    )
     
     state = (
         '0',
@@ -156,9 +148,9 @@ def show_predict_page():
         'recruiter': [recruiter],
         })
 
-        # Output prediction
-        X['jobClassification'] = 'jobClassification'
-        X['jobClassification'] = X['jobClassification'].replace(jobClassification)
+#         # Output prediction
+#         X['jobClassification'] = 'jobClassification'
+#         X['jobClassification'] = X['jobClassification'].replace(jobClassification)
 
 
         salary = regressor_loaded.predict(X)
