@@ -155,8 +155,7 @@ def show_predict_page():
         'Scala': [Scala],
         'recruiter': [recruiter],
         })
-        # Store inputs into dataframe
-        X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
+
         # Output prediction
 
         salary = regressor_loaded.predict(X)
