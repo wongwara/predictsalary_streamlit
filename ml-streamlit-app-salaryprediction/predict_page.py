@@ -39,18 +39,14 @@ def show_predict_page():
         'No': 0,
         'Yes': 1,
     }
-   
-
     Python_dict = {
         'No': 0,
         'Yes': 1,
-    }
-    
+    }    
     SQL_dict = {
         'No': 0,
         'Yes': 1,
-    }
-    
+    }    
     R_dict = {
         'No': 0,
         'Yes': 1,
@@ -95,79 +91,80 @@ def show_predict_page():
         'No': 0,
         'Yes': 1,
     }
-    
-    job_classification_options = list(job_classification_dict.keys())
-    job_classification = st.selectbox("jobClassification", job_classification_options)
-    jobClassification = job_classification_dict[job_classification]
-    state_options = list(state_dict.keys())
-    state = st.selectbox("state", state_options)
-    state = state_dict[state]
-    isRightToWorkRequired_options = list(isRightToWorkRequired_dict.keys())
-    isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
-    isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
-    Python_options = list(Python_dict.keys())
-    Python = st.multiselect("Python", Python_options)
-    Python = [Python_dict[p] for p in Python]
+    col1, col2, col3 = st.columns(3)
 
-    SQL_options = list(SQL_dict.keys())
-    SQL = st.multiselect("SQL", SQL_options)
-    SQL = [SQL_dict[s] for s in SQL]
+    with col1:
+        st.header("Job Classification")
+        job_classification_options = list(job_classification_dict.keys())
+        job_classification = st.selectbox("jobClassification", job_classification_options)
+        jobClassification = job_classification_dict[job_classification]
+        st.image("https://static.streamlit.io/examples/cat.jpg")
 
-    R_options = list(R_dict.keys())
-    R = st.multiselect("R", R_options)
-    R = [R_dict[r] for r in R]
+    with col2:
+        st.header("Options")
+        state_options = list(state_dict.keys())
+        state = st.selectbox("state", state_options)
+        state = state_dict[state]
+        isRightToWorkRequired_options = list(isRightToWorkRequired_dict.keys())
+        isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
+        isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
+        recruiter_options = list(recruiter_dict.keys())
+        recruiter = st.selectbox("recruiter", recruiter_options)
+        recruiter = recruiter_dict[recruiter] 
+        st.image("https://static.streamlit.io/examples/dog.jpg")
 
-    Tableau_options = list(Tableau_dict.keys())
-    Tableau = st.multiselect("Tableau", Tableau_options)
-    Tableau = [Tableau_dict[t] for t in Tableau]
-
-    SAS_options = list(SAS_dict.keys())
-    SAS = st.multiselect("SAS", SAS_options)
-    SAS = [SAS_dict[s] for s in SAS]
-
-    Python_options = list(Python_dict.keys())
-    Python = st.selectbox("Python", Python_options)
-    Python = Python_dict[Python]
+    with col3:
+        st.header("Programming Required")
+        Python_options = list(Python_dict.keys())
+        Python = st.selectbox("Python", Python_options)
+        Python = Python_dict[Python]
    
-    SQL_options = list(SQL_dict.keys())
-    SQL = st.selectbox("SQL", SQL_options)
-    SQL = SQL_dict[SQL]
+        SQL_options = list(SQL_dict.keys())
+        SQL = st.selectbox("SQL", SQL_options)
+        SQL = SQL_dict[SQL]
     
-    R_options = list(R_dict.keys())
-    R = st.selectbox("R", R_options)
-    R = R_dict[R]
+        R_options = list(R_dict.keys())
+        R = st.selectbox("R", R_options)
+        R = R_dict[R]
     
-    Tableau_options = list(Tableau_dict.keys())
-    Tableau = st.selectbox("Tableau", Tableau_options)
-    Tableau = Tableau_dict[Tableau]
+        Tableau_options = list(Tableau_dict.keys())
+        Tableau = st.selectbox("Tableau", Tableau_options)
+        Tableau = Tableau_dict[Tableau]
     
-    SAS_options = list(SAS_dict.keys())
-    SAS = st.selectbox("SAS", SAS_options)
-    SAS = SAS_dict[SAS]
+        SAS_options = list(SAS_dict.keys())
+        SAS = st.selectbox("SAS", SAS_options)
+        SAS = SAS_dict[SAS]
     
-    Matlab_options = list(Matlab_dict.keys())
-    Matlab = st.selectbox("Matlab", Matlab_options)
-    Matlab = Matlab_dict[Matlab] 
+        Matlab_options = list(Matlab_dict.keys())
+        Matlab = st.selectbox("Matlab", Matlab_options)
+        Matlab = Matlab_dict[Matlab] 
     
-    Hadoop_options = list(Hadoop_dict.keys())
-    Hadoop = st.selectbox("Hadoop", Hadoop_options)
-    Hadoop = Hadoop_dict[Hadoop] 
+        Hadoop_options = list(Hadoop_dict.keys())
+        Hadoop = st.selectbox("Hadoop", Hadoop_options)
+        Hadoop = Hadoop_dict[Hadoop] 
     
-    Spark_options = list(Spark_dict.keys())
-    Spark = st.selectbox("Spark", Spark_options)
-    Spark = Spark_dict[Spark] 
+        Spark_options = list(Spark_dict.keys())
+        Spark = st.selectbox("Spark", Spark_options)
+        Spark = Spark_dict[Spark] 
     
-    Java_options = list(Java_dict.keys())
-    Java = st.selectbox("Java", Java_options)
-    Java = Java_dict[Java] 
+        Java_options = list(Java_dict.keys())
+        Java = st.selectbox("Java", Java_options)
+        Java = Java_dict[Java] 
     
-    Scala_options = list(Scala_dict.keys())
-    Scala = st.selectbox("Scala", Scala_options)
-    Scala = Scala_dict[Scala] 
+        Scala_options = list(Scala_dict.keys())
+        Scala = st.selectbox("Scala", Scala_options)
+        Scala = Scala_dict[Scala] 
     
-    recruiter_options = list(recruiter_dict.keys())
-    recruiter = st.selectbox("recruiter", recruiter_options)
-    recruiter = recruiter_dict[recruiter] 
+#     job_classification_options = list(job_classification_dict.keys())
+#     job_classification = st.selectbox("jobClassification", job_classification_options)
+#     jobClassification = job_classification_dict[job_classification]
+#     state_options = list(state_dict.keys())
+#     state = st.selectbox("state", state_options)
+#     state = state_dict[state]
+#     isRightToWorkRequired_options = list(isRightToWorkRequired_dict.keys())
+#     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
+#     isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
+
 
     ok = st.button("Calculate Salary")
     if ok:
