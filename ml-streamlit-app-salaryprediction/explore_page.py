@@ -64,7 +64,7 @@ def show_explore_page():
     sum_programming_cleaned = pd.Series(sum_programming.loc[sum_programming >= 50])
     top10_programming_cleaned = sum_programming_cleaned.sort_values().tail(10)
 
-    fig = px.bar(x=top10_programming_cleaned, y=top10_programming_cleaned.index, orientation='h')
+    fig = px.bar(x=top10_programming_cleaned, y=top10_programming_cleaned.index, orientation='h', color=top10_programming_cleaned.index)
     fig.update_layout(title='Top 10 Programming Languages Required for Data Scientist',
                   xaxis_title='Count',
                   yaxis_title='Programming Language')
