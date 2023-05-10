@@ -103,10 +103,6 @@ def show_predict_page():
     isRightToWorkRequired_options = list(isRightToWorkRequired_dict.keys())
     isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
     isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
-    
-    state = st.selectbox("state", state)
-    st.write("'Australian Capital Territory':0, 'South Australia':1,'Western Australia':2")
-    
     Python = st.selectbox("Python", Python)
     st.write("'Yes':1, 'No':0")
     
