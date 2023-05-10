@@ -11,8 +11,7 @@ jobClassification_enc = data["encode"]
 
 def show_predict_page():
     st.title("🤖 Salary Prediction")
-    st.write(""" This project is for the job-seeker and students to searching the expected salary from related information, such as location or job subclassification""")
-    st.write(""" And for this prediction, We need some information to predict the salary""")
+    st.write(""" This project is for the job-seeker and students to searching the expected salary from related information, such as location or job subclassification and for this prediction, We need some information to predict the salary""")
     job_classification_dict = {
     'Information & Communication Technology': 0,
     'Banking & Financial Services': 1,
