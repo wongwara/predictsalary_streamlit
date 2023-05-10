@@ -178,31 +178,28 @@ def show_predict_page():
 
     ok = st.button("Calculate Salary")
     if ok:
-        X = pd.DataFrame({
-        'jobClassification': [jobClassification],
-        'isRightToWorkRequired': [isRightToWorkRequired],
-        'state': [state],
-        'Python': [Python],
-        'SQL': [SQL],
-        'R': [R],
-        'Tableau': [Tableau],
-        'SAS': [SAS],
-        'Matlab': [Matlab],
-        'Hadoop': [Hadoop],
-        'Spark': [Spark],
-        'Java': [Java],
-        'Scala': [Scala],
-        'recruiter': [recruiter],
-        'teaser': [teaser],
-        'desktopAdTemplate': [desktopAdTemplate]
-        })
-
-        X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
-        X['teaser'] = preprocess_text_input(X['teaser'])
-        X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])
+        X = pd.DataFrame([[state,Python,SQL,R,Tableau,SAS,Matlab,Hadoop,Spark,Java,Scala,recruiter,
+          teaser,desktopAdtemplate,isRightToWorkRequired,jobClassification]], 
+                         columns = [state,Python,SQL,R,Tableau,SAS,Matlab,Hadoop,Spark,Java,Scala,recruiter,
+          teaser,desktopAdtemplate,isRightToWorkRequired,jobClassification])
         
+        # Store inputs into dataframe
+        X = X.replace([
+        'Information & Communication Technology',
+       'Banking & Financial Services', 'Science & Technology',
+       'Education & Training', 'Government & Defence',
+       'Consulting & Strategy', 'Healthcare & Medical',
+       'Human Resources & Recruitment', 'Marketing & Communications',
+       'Retail & Consumer Products', 'Administration & Office Support',
+       'Accounting', 'Insurance & Superannuation',
+       'Mining, Resources & Energy', 'Real Estate & Property',
+       'Manufacturing, Transport & Logistics', 'Engineering'], [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
+        
+        # Output prediction
+        X['teaser'] = preprocess_text_input(X['teaser'])
+        X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])       
         salary = regressor_loaded.predict(X)
-        st.subheader(f"The estimated salary range is ${salary[0]:.2f}")
+        st.subheader(f"The estimated salary range is {salary}")
         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
 
 #     if ok:
