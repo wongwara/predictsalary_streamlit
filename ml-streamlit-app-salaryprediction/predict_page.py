@@ -26,17 +26,17 @@ def show_predict_page():
        'Manufacturing':15, 'Transport & Logistics':16, 'Engineering':17,
     })
     
+    state = (
+        '0',
+        '1',
+        '2',
+    ) 
+    
     isRightToWorkRequired = (
         '0',
         '1',
     )
 
-    state = (
-        '0',
-        '1',
-        '2',
-    )
-    
     Python = (
         '0',
         '1',
@@ -141,8 +141,8 @@ def show_predict_page():
     if ok:
         X = pd.DataFrame({
         'jobClassification': [jobClassification],
-        'isRightToWorkRequired': [isRightToWorkRequired],
         'state': [state],
+        'isRightToWorkRequired': [isRightToWorkRequired],
         'Python': [Python],
         'SQL': [SQL],
         'R': [R],
