@@ -12,7 +12,7 @@ df = load_data()
 def show_explore_page():
     st.title("Explore The Raw data for Salaries prediction")
     
-    st.dataframe(df.head())
+    st.dataframe(df.head(5))
     st.write(
         """
     ### Jobs released each month from January 2019 to January 2022
