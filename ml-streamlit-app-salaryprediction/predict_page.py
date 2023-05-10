@@ -197,7 +197,7 @@ def show_predict_page():
         'DesktopAdTemplate': [desktopAdTemplate]
         })
         # Store inputs into dataframe
-      X = X.replace([
+      X = X.replace({
         'Information & Communication Technology',
        'Banking & Financial Services', 'Science & Technology',
        'Education & Training', 'Government & Defence',
@@ -206,7 +206,7 @@ def show_predict_page():
        'Retail & Consumer Products', 'Administration & Office Support',
        'Accounting', 'Insurance & Superannuation',
        'Mining, Resources & Energy', 'Real Estate & Property',
-       'Manufacturing, Transport & Logistics', 'Engineering'], [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
+       'Manufacturing, Transport & Logistics', 'Engineering'}, [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
         
         # Output prediction
        X['teaser'] = preprocess_text_input(X['teaser'])
