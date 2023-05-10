@@ -172,4 +172,4 @@ def show_predict_page():
         salary_range_list = salary_range_str.split(',')  # split the string by comma
         min_salary = int(float(salary_range_list[0]))  # convert the first value to float and then to int
         max_salary = int(float(salary_range_list[1]))  # convert the second value to float and then to int
-        st.subheader(f"The estimate salary from the given information is in the range of {min_salary} to {max_salary}$")
+        st.subheader(f"The estimate salary from the given information is in the range of {min_salary:,.0f} to {max_salary:,.0f}$")
