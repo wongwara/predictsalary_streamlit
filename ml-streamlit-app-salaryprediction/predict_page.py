@@ -14,7 +14,7 @@ def show_predict_page():
 
     st.write("""### We need some information to predict the salary""")
 
-    jobClassification = (
+    jobClassification = ({
         'Information & Communication Technology': 0,
        'Banking & Financial Services':1, 'Science & Technology':2,
        'Education & Training':3, 'Government & Defence':4,
@@ -24,7 +24,7 @@ def show_predict_page():
        'Accounting':11, 'Insurance & Superannuation':12,
        'Mining, Resources & Energy':13, 'Real Estate & Property':14,
        'Manufacturing':15, 'Transport & Logistics':16, 'Engineering':17,
-    )
+    })
     
     isRightToWorkRequired = (
         '0',
