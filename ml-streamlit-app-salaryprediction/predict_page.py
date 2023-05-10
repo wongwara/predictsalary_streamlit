@@ -30,22 +30,15 @@ def show_predict_page():
     'Mining, Resources & Energy': 13,
     'Real Estate & Property': 14,
     'Manufacturing, Transport & Logistics': 15,
-    'Engineering': 16
-}
-#   jobClassification = (
-#        '0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17'
-#     )
+    'Engineering': 16}
+    state_dict = {'Australian Capital Territory': 0,
+                  'South Australia': 1,
+                  'Western Australia': 2}
     
-    state = (
-        '0',
-        '1',
-        '2',
-    ) 
-    
-    isRightToWorkRequired = (
-        '0',
-        '1',
-    )
+    isRightToWorkRequired_dict = {
+        'No': 0,
+        'Yes': 1,
+    }
 
     Python = (
         '0',
@@ -104,11 +97,12 @@ def show_predict_page():
     job_classification_options = list(job_classification_dict.keys())
     job_classification = st.selectbox("jobClassification", job_classification_options)
     jobClassification = job_classification_dict[job_classification]
-
-#     jobClassification = st.selectbox("jobClassification", jobClassification)
-    
-    isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired)
-    st.write("f': 0, 't': 1")
+    state_options = list(state_dict.keys())
+    state = st.selectbox("state", state_options)
+    state = state_dict[state]
+    isRightToWorkRequired_options = list(isRightToWorkRequired_dict.keys())
+    isRightToWorkRequired = st.selectbox("isRightToWorkRequired", isRightToWorkRequired_options)
+    isRightToWorkRequired = isRightToWorkRequired_dict[isRightToWorkRequired]
     
     state = st.selectbox("state", state)
     st.write("'Australian Capital Territory':0, 'South Australia':1,'Western Australia':2")
