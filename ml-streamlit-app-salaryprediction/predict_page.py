@@ -11,6 +11,7 @@ jobClassification_enc = data["encode"]
 
 def show_predict_page():
     st.title("🤖 Salary Prediction")
+    st.subtitle("Data Scientist salary prediction using a machine learning model")
 
     st.write("""### We need some information to predict the salary""")
     job_classification_dict = {
@@ -94,7 +95,7 @@ def show_predict_page():
     col1, col2 = st.columns(2)
 
     with col1:
-        st.header("Job Classification and options")
+        st.subheader("Job Classification and options")
         job_classification_options = list(job_classification_dict.keys())
         job_classification = st.selectbox("jobClassification", job_classification_options)
         jobClassification = job_classification_dict[job_classification]
@@ -112,7 +113,7 @@ def show_predict_page():
         st.image("https://images.unsplash.com/photo-1530230624258-4055a187ef65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1341&q=80")
 
     with col2:
-        st.header("Programming Required")
+        st.subheader("Programming Required")
         Python_options = list(Python_dict.keys())
         Python = st.selectbox("Python", Python_options)
         Python = Python_dict[Python]
