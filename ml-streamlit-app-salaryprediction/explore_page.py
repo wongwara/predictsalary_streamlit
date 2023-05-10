@@ -11,8 +11,8 @@ df = load_data()
 
 def show_explore_page():
     st.title("Explore Software Engineer Salaries")
-    st.dataframe(data=df, width=50, height=20, *, use_container_width=False)
-
+    
+    st.dataframe(df, use_container_width=st.session_state.use_container_width)
     st.write(
         """
     ### Jobs released each month from January 2019 to January 2022
