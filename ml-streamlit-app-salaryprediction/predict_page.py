@@ -157,8 +157,8 @@ def show_predict_page():
         })
 
         # Output prediction
-        X['jobClassificationl'] = 'jobClassification'
-        X['jobClassificationl'] = X['jobClassification'].replace(jobClassification)
+        X['jobClassification'] = 'jobClassification'
+        X['jobClassification'] = X['jobClassification'].replace(jobClassification)
 
 
         salary = regressor_loaded.predict(X)
