@@ -10,9 +10,9 @@ def load_data():
 df = load_data()
 
 def show_explore_page():
-    st.title("Explore The Raw data for Salaries prediction")
+    st.title("Job salary for data scientist in AUSTRALIA")
     
-    st.dataframe(df.head(5))
+    st.table(df)
     st.write(
         """
     ### Jobs released each month from January 2019 to January 2022
