@@ -1,22 +1,9 @@
-# Import OrdinalEncoder from sklearn.preprocessing
 from sklearn.preprocessing import OrdinalEncoder
 import streamlit as st
 import pandas as pd
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from prediction import load_model
 from sklearn.svm import SVC
 import re
-
-X_train = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/X_train.csv', index_col=[0])
-X_test = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/X_test.csv', index_col=[0])
-y_train = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/y_train.csv', index_col=[0])
-y_test = pd.read_csv('https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/Final/data%20splitted/y_test.csv', index_col=[0])
-y_train = y_train.values.ravel()
-y_test = y_test.values.ravel()
 
 data = load_model()
 regressor_loaded = data["model"]
@@ -146,32 +133,6 @@ def show_predict_page():
     recruiter = st.selectbox("recruiter", recruiter)
     st.write("'Yes':1, 'No':0")
     
-    # Input widgets
-    teaser = st.text_input(
-        "Enter teaser from your search , if None please type (-)",'')
-    desktopAdTemplate = st.text_input(
-        "Enter desktopAdTemplate from your search , if None please type (-)",'')
-
-    def preprocess_text_input(input_str):
-        # Clean the text data
-        input_str = str(input_str)  # convert to string
-        input_str = re.sub('[^\w\s]', '', input_str) # Remove punctuation
-        input_str = re.sub('\d+', '', input_str) # Remove digits
-        # Normalize the text data
-        stop_words = set(stopwords.words('english'))
-        input_str = ' '.join([word.lower() for word in input_str.split() if word.lower() not in stop_words])
-        # Tokenize the text data
-        input_str = word_tokenize(input_str)
-        # Apply stemming
-        stemmer = PorterStemmer()
-        input_str = [stemmer.stem(word) for word in input_str]
-
-        # Create TF-IDF vectors
-        vectorizer = TfidfVectorizer()
-        input_tfidf = vectorizer.fit_transform([' '.join(input_str)])
-
-        return input_tfidf.toarray()
-    
     # create an SVM model with the best hyperparameters found using grid search
     svm_model = SVC(C=10, gamma='scale', kernel='linear')
     svm_model.fit(X_train, y_train)
@@ -193,14 +154,11 @@ def show_predict_page():
         'Java': [Java],
         'Scala': [Scala],
         'recruiter': [recruiter],
-        'teaser': [teaser],
-        'desktopAdTemplate': [desktopAdTemplate]
         })
         # Store inputs into dataframe
         X['jobClassification'] = jobClassification_enc.fit_transform(X['jobClassification'])
         # Output prediction
-        X['teaser'] = preprocess_text_input(X['teaser'])
-        X['desktopAdTemplate'] = preprocess_text_input(X['desktopAdTemplate'])       
+
         salary = regressor_loaded.predict(X)
         st.subheader(f"The estimated salary range is {salary}")
         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
