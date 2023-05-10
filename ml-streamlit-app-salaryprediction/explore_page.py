@@ -47,10 +47,26 @@ def show_explore_page():
     monthly_count = df.resample('W', on='listingDate').size().reset_index(name='count')
 
     # Create a Plotly line chart
-    fig = px.line(monthly_count, x='listingDate', y='count', title='Job Release Amount per Week', width=800, height=500)
+    fig2 = px.line(monthly_count, x='listingDate', y='count', title='Job Release Amount per Week', width=800, height=500)
 
     # Update the x-axis tick labels
-    fig.update_layout(xaxis_tickangle=-45)
+    fig2.update_layout(xaxis_tickangle=-45)
 
     # Display the chart in Streamlit
+    st.plotly_chart(fig2)
+    
+    st.write(
+        """
+    ### Top 10 Programming Languages Required for Data Scientist
+    """
+    )
+    sum_programming = df.iloc[:, 24:49].sum()
+    sum_programming_cleaned = pd.Series(sum_programming.loc[sum_programming >= 50])
+    top10_programming_cleaned = sum_programming_cleaned.sort_values().tail(10)
+
+    fig = px.bar(x=top10_programming_cleaned, y=top10_programming_cleaned.index, orientation='h')
+    fig.update_layout(title='Top 10 Programming Languages Required for Data Scientist',
+                  xaxis_title='Count',
+                  yaxis_title='Programming Language')
     st.plotly_chart(fig)
+
