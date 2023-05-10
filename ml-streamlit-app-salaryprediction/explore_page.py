@@ -22,10 +22,13 @@ def show_explore_page():
     st.subheader("The highest demand job classification in Australia")
     # Compute the counts for each job classification
     job_counts = df['jobClassification'].value_counts()
+    # Select the top 10 highest job counts
+    top_job_counts = job_counts.nlargest(10)
+
 
     # Create a Plotly bar chart
-    fig = px.bar(x=job_counts.index, y=job_counts.values, color=job_counts.index)
-    fig.update_layout(xaxis_title='Job Classification', yaxis_title='Count', title='Highest Demand Job Classification')
+    fig = px.bar(x=top_job_counts.index, y=top_job_counts.values, color=top_job_counts.index)
+    fig.update_layout(xaxis_title='Job Classification', yaxis_title='Count', title='Top 10 Highest Demand Job Classification')
 
     # Display the chart in Streamlit
     st.plotly_chart(fig)
