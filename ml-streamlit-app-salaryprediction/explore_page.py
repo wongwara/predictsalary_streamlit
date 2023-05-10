@@ -56,7 +56,7 @@ def show_explore_page():
     st.plotly_chart(fig2)
     st.write(
         """
-    The bar chart can be used by job seekers to find businesses that post openings more frequently. The graph displays explicitly the number of businesses that announced more than ten job openings during the four-year span. The data shows that the Australian Bureau of Statistics, the Australian Department of Defence, SEEK, Capgemini, and Suncorp are the top five corporations that have posted the most job openings. 
+    represents the data by counting the number of jobs released each month from January 2019 to January 2022, grouping them by month, and calculating the overall number.
     """
     )
     st.write(
@@ -73,4 +73,9 @@ def show_explore_page():
                   xaxis_title='Count',
                   yaxis_title='Programming Language')
     st.plotly_chart(fig)
+    st.write(
+        """
+        Knowing the most popular programming languages is crucial for job searchers who want to obtain significant insight into the data scientist job market. Some of the most widely used languages in the sector are Python, SQL, R, SAS, and many others. employment searchers can better understand which talents are most in demand in the current employment market by graphing the usage frequency of various languages. 
+        """
+    )
 
