@@ -12,13 +12,7 @@ df = load_data()
 
 def show_explore_page():
     st.title("💰 Job salary for data scientist in AUSTRALIA")
-    
-    
-    st.write(
-        """
-    ### Jobs released each month from January 2019 to January 2022
-    """
-    )
+  
     st.write(
         """ 
         As a data science student preparing to enter the job market, we were curious about programming languages and whether or not we required a basic understanding of multiple languages, as well as what employers expect of job candidates.
@@ -41,5 +35,23 @@ def show_explore_page():
     fig = px.bar(x=top_job_counts.index, y=top_job_counts.values, color=top_job_counts.index)
     fig.update_layout(xaxis_title='Job Classification', yaxis_title='Count', title='Top 10 Highest Demand Job Classification')
     
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
+    
+    st.write(
+        """
+    ### Jobs released each month from January 2019 to January 2022
+    """
+    )
+    # Compute the monthly job counts
+    df['listingDate'] = pd.to_datetime(df['listingDate'])
+    monthly_count = df.resample('W', on='listingDate').size().reset_index(name='count')
+
+    # Create a Plotly line chart
+    fig = px.line(monthly_count, x='listingDate', y='count', title='Job Release Amount per Week', width=800, height=500)
+
+    # Update the x-axis tick labels
+    fig.update_layout(xaxis_tickangle=-45)
+
     # Display the chart in Streamlit
     st.plotly_chart(fig)
