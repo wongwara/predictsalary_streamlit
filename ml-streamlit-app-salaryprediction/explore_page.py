@@ -20,13 +20,17 @@ def show_explore_page():
     """
     )
     st.write(
-        "" As a data science student preparing to enter the job market, we were curious about programming languages and whether or not we required a basic understanding of multiple languages, as well as what employers expect of job candidates."") 
-    st.write("" Therefore, the objective of this project would be to develop a machine learning model that accepts a job title and the job description with any related words from the job as input and returns expected salary associated with that job."")
-    st.subheader("The highest demand job classification in Australia")
+        """ 
+        As a data science student preparing to enter the job market, we were curious about programming languages and whether or not we required a basic understanding of multiple languages, as well as what employers expect of job candidates.
+        """
+    ) 
     st.write(
-        " Top ten 
-    "
-    )
+        """
+             Therefore, the objective of this project would be to develop a machine learning model that accepts a job title and the job description with any related words from the job as input and returns expected salary associated with that job.
+             """
+            )
+    st.subheader("The highest demand job classification in Australia")
+
     # Compute the counts for each job classification
     job_counts = df['jobClassification'].value_counts()
     # Select the top 10 highest job counts
