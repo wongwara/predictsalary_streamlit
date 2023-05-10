@@ -11,8 +11,7 @@ jobClassification_enc = data["encode"]
 
 def show_predict_page():
     st.title("🤖 Salary Prediction")
-    st.subheader(" Data Scientist salary prediction using a machine learning model")
-
+    st.write(""" ANLP_Baymax group 55 - Data Scientist salary prediction using a machine learning model """)
     st.write(""" We need some information to predict the salary""")
     job_classification_dict = {
     'Information & Communication Technology': 0,
