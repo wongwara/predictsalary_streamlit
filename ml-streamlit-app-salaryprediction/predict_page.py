@@ -91,17 +91,13 @@ def show_predict_page():
         'No': 0,
         'Yes': 1,
     }
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     with col1:
-        st.header("Job Classification")
+        st.header("Job Classification and options")
         job_classification_options = list(job_classification_dict.keys())
         job_classification = st.selectbox("jobClassification", job_classification_options)
         jobClassification = job_classification_dict[job_classification]
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-
-    with col2:
-        st.header("Options")
         state_options = list(state_dict.keys())
         state = st.selectbox("state", state_options)
         state = state_dict[state]
@@ -113,7 +109,7 @@ def show_predict_page():
         recruiter = recruiter_dict[recruiter] 
         st.image("https://static.streamlit.io/examples/dog.jpg")
 
-    with col3:
+    with col2:
         st.header("Programming Required")
         Python_options = list(Python_dict.keys())
         Python = st.selectbox("Python", Python_options)
