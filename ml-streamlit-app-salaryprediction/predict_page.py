@@ -107,6 +107,8 @@ def show_predict_page():
         recruiter_options = list(recruiter_dict.keys())
         recruiter = st.selectbox("recruiter", recruiter_options)
         recruiter = recruiter_dict[recruiter] 
+        st.write(""" ##Australia map from Photo by <a href="https://unsplash.com/@jontyson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jon Tyson</a> on <a href="https://unsplash.com/photos/YNNtKJKDjCI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+   """)
         st.image("https://images.unsplash.com/photo-1530230624258-4055a187ef65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1341&q=80")
 
     with col2:
