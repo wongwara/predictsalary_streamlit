@@ -45,10 +45,10 @@ def show_explore_page():
     )
     # Compute the monthly job counts
     df['listingDate'] = pd.to_datetime(df['listingDate'])
-    monthly_count = df.resample('W', on='listingDate').size().reset_index(name='count')
+    monthly_count = df.resample('M', on='listingDate').size().reset_index(name='count')
 
     # Create a Plotly line chart
-    fig2 = px.line(monthly_count, x='listingDate', y='count', title='Job Release Amount per Week', width=800, height=500)
+    fig2 = px.line(monthly_count, x='listingDate', y='count', title='Job Release Amount per Month', width=800, height=500)
 
     # Update the x-axis tick labels
     fig2.update_layout(xaxis_tickangle=-45)
