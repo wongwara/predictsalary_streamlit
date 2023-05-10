@@ -8,7 +8,6 @@ def load_data():
     df = pd.read_csv("https://raw.githubusercontent.com/wongwara/Jobseeker_Baymax/main/dataset/listings2019_2022.csv")
     return df
 
-df = load_data()
 
 def show_explore_page():
     st.title("💰 Job salary for data scientist in AUSTRALIA")
