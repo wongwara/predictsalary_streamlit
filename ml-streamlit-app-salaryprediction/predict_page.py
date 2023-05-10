@@ -168,10 +168,13 @@ def show_predict_page():
         })
         
         salary = regressor_loaded.predict(X)
-        salary_min = salary[0] * 1000
-        salary_max = salary[1] * 1000
+        salary_range = f"({salary[0]:,.2f}, {salary_max:,.2f})"
+        if len(salary) > 1:
+            salary_max = salary[1] * 1000
+        else:
+            salary_max = salary[0] * 1000
         st.subheader(f"The estimated salary range is ${salary_min:.2f} - ${salary_max:.2f}")
-        st.subheader(f"The estimated salary range is {salary}")
+#         st.subheader(f"The estimated salary range is {salary}")
         st.write("'(100000.0, 110000.0] :0 ', '(90000.0, 100000.0] :1', '(110000.0, 120000.0] :2 ', '(80000.0, 90000.0] :3', '(130000.0, 140000.0] :4', '(60000.0, 80000.0] :5', '(120000.0, 130000.0] :6', '(140000.0, 160000.0] :7', '(180000.0, inf] :8', '(160000.0, 180000.0] :9', '(18000.0, 60000.0] :10' ")
       
 
