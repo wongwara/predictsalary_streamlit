@@ -10,7 +10,7 @@ regressor_loaded = data["model"]
 jobClassification_enc = data["encode"]
 
 def show_predict_page():
-    st.title("Software Developer Salary Prediction")
+    st.title("💰😍 Salary Prediction")
 
     st.write("""### We need some information to predict the salary""")
     job_classification_dict = {
