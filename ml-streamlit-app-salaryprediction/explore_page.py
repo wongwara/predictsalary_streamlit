@@ -37,7 +37,9 @@ def show_explore_page():
     
     # Display the chart in Streamlit
     st.plotly_chart(fig)
-    
+    st.write("""
+    The highest demands for an Australian job classification are in the Information Communication Technology field, followed by science and technology, then Government& Defence.
+    """)
     st.write(
         """
     ### Jobs released each month from January 2019 to January 2022
@@ -120,4 +122,40 @@ def show_explore_page():
     st.write("""
      The data shows that the Australian Bureau of Statistics, the Australian Department of Defence, SEEK, Capgemini, and Suncorp are the top five corporations that have posted the most job openings.
     """)
+    
+    st.write(
+        """
+    ### Programming Languages Demand in Different States
+    """
+    )
+    df_lang = df.iloc[:, 24:49]
+    sum_languages = df_lang.sum()
+    sum_languages = sum_languages.sort_values()
+    df_lang_cleaned = df_lang.loc[:, sum_languages >= 50]
 
+    grouped = df_lang_cleaned.groupby(df['state']).sum()
+
+    grouped = grouped.drop(['Overseas', 'UK & Ireland'], axis = 0)
+
+    fig = go.Figure()
+    for column in grouped.columns:
+        fig.add_trace(go.Bar(
+            x=grouped[column].values,
+            y=grouped[column].index,
+            name=column,
+            orientation='h'
+        ))
+
+    fig.update_layout(
+        barmode='stack',
+        title='Programming Languages Demand in Different States',
+        xaxis_title='Number of Job Openings',
+        yaxis_title='State',
+        )
+
+    st.plotly_chart(fig)
+    st.write("""
+     The data shows the different demands of programming languages in each state.
+    """)
+    
+    
